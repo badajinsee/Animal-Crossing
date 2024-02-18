@@ -19,6 +19,10 @@ body {
   -moz-osx-font-smoothing: grayscale; */
 
   font-family: "UhBeecharming";
+
+  @apply m-20;
+
+  @apply bg-transparent;
 }
 
 code {
