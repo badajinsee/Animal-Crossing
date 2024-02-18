@@ -20,9 +20,7 @@ body {
 
   font-family: "UhBeecharming";
 
-  @apply m-20;
-
-  @apply bg-transparent;
+  @apply mx-10;
 }
 
 code {
