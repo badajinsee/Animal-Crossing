@@ -20,16 +20,16 @@ const Header = () => {
 
       <div className="flex justify-center">
         <div className="MenuBar bg-menuColor gap-3 text-3xl my-3 flex justify-center text-white py-3 rounded-3xl w-1/2 max-sm:h-12 max-sm:text-lg max-sm:px-1">
-          <div>
+          <div className="hover:text-black">
             <Link to="/">홈</Link>
           </div>
-          <div>
+          <div className="hover:text-black">
             <Link to="/Furniture">가구</Link>
           </div>
-          <div>
+          <div className="hover:text-black">
             <Link to="/Flower">꽃교배</Link>
           </div>
-          <div>
+          <div className="hover:text-black">
             <Link to="/Acc">기타사이트</Link>
           </div>
         </div>
