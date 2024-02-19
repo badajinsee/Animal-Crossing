@@ -19,7 +19,7 @@ const Header = () => {
       </div>
 
       <div className="flex justify-center">
-        <div className="MenuBar bg-menuColor gap-3 text-3xl my-3 flex justify-center text-white py-3 rounded-3xl w-1/2 ">
+        <div className="MenuBar bg-menuColor gap-3 text-3xl my-3 flex justify-center text-white py-3 rounded-3xl w-1/2 max-sm:h-12 max-sm:text-lg max-sm:px-1">
           <div>
             <Link to="/">홈</Link>
           </div>

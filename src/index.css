@@ -21,6 +21,7 @@ body {
   font-family: "UhBeecharming";
 
   @apply mx-32;
+  @apply max-sm:mx-0;
 }
 
 code {

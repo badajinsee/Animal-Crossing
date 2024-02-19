@@ -16,7 +16,7 @@ function App() {
     <BrowserRouter>
       <div className="flex flex-col min-h-screen">
         <Header />
-        <div className="flex-grow w-full ">
+        <div className="flex-grow w-full px-3 ">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/Vilger" element={<Vilager />} />
