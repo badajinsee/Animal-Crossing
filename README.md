@@ -5,6 +5,8 @@
 ## 소개
 
 - 개발기간 : 2024.2.17 ~ ing
+- 레이니데이는 동물의숲 도감 페이지 입니다 !
+- 제작과정 블로그 : [👉 동물의숲 제작과정 벨로그 링크](https://velog.io/@badajinsee/series/Reacttoyproject)
 
 ## 팀원
 
