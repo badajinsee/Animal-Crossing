@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        galmuri: ["UhBeecharming", "sans-serif"],
+        galmuri: ["LeeSeoyun", "sans-serif"],
       },
       colors: {
         headerColor: "#A4CFBA",
