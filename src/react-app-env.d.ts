@@ -1,18 +1,14 @@
 /// <reference types="react-scripts" />
 
-declare interface NHDetails {
-  icon_url: string;
-  house_exterior_url: string;
-}
-
-declare interface Villager {
-  image_url: string;
+declare interface VillagerType {
   name: string;
   species: string;
-  gender: string;
-  personality: string;
-  birthday_month: string;
-  birthday_day: number;
-  quote: string;
-  nh_details: NHDetails;
+  personality: Personality;
+  birthday: string;
+  translations: {
+    kRko: string;
+  };
+  photoImage: string;
+  iconImage: string;
+  houseImage: string | null;
 }

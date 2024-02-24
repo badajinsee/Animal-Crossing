@@ -19,7 +19,7 @@ function App() {
         <div className="flex-grow w-full px-3 ">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/Vilger" element={<Vilager />} />
+            <Route path="/Vilager/:name" element={<Vilager />} />
             <Route path="/Flower" element={<Flower />} />
             <Route path="/Furniture" element={<Furniture />} />
             <Route path="/FurnitureDetail" element={<FurnitureDetail />} />
