@@ -12,9 +12,14 @@ const Home = () => {
     ko: villager.translations.kRko,
   }));
 
+  // 주민 종류 불러오기
+  // const animlalSpecies = [...new Set(villagers.map((v) => v.species))];
+  // console.log(animlalSpecies);
+
   // input에 입력한 값 저장 | 사용자 입력 상태 저장
   const [inputValue, setInputValue] = useState("");
 
+  // 네비게이트 | 동물 상세페이지 이동
   const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -30,6 +35,8 @@ const Home = () => {
     const matchAnimal = animalName.find((animal) => animal.ko === inputValue);
     if (matchAnimal) {
       navigate(`/Vilager/${matchAnimal.eng}`);
+    } else {
+      navigate(`/Vilager/${inputValue}`);
     }
   };
   return (
