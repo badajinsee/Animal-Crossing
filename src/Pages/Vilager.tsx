@@ -1,33 +1,12 @@
 import { villagers } from "animal-crossing";
-import { Personality } from "animal-crossing/lib/types/Villager";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { PersonalityToKorean, SpeciesToKorean } from "../utils/AnimalKr";
 
 const Vilger = () => {
   const [animal, setAnimal] = useState<VillagerType | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const { name } = useParams();
-
-  // 주민 성격별 번역
-  const personalityKr = {
-    Jock: "운동광",
-    Cranky: "무뚝뚝",
-    Peppy: "아이돌",
-    "Big Sister": "단순활발",
-    Lazy: "먹보",
-    Normal: "친절함",
-    Snooty: "성숙함",
-    Smug: "느끼함",
-  };
-
-  // 주민 성격 번역 함수
-  function PersonalityToKorean(inputpersonality: Personality): Personality {
-    const koreanPersonality = personalityKr[inputpersonality];
-    if (koreanPersonality) {
-      return koreanPersonality as Personality;
-    }
-    return inputpersonality;
-  }
 
   useEffect(() => {
     setIsLoading(false);
@@ -35,6 +14,8 @@ const Vilger = () => {
     if (foundAnimal) {
       // 찾은 동물의 펄소널리티 값을 한국어로 변환하여 할당
       foundAnimal.personality = PersonalityToKorean(foundAnimal.personality);
+      //
+      foundAnimal.species = SpeciesToKorean(foundAnimal.species);
       setAnimal(foundAnimal);
       setIsLoading(true);
     }
