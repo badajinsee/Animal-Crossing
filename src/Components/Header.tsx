@@ -5,7 +5,7 @@ const Header = () => {
     <>
       <div className="Header w-auto h-auto mb-4 ">
         <Link to="/">
-          <div className="leftHeader flex bg-headerColor   ">
+          <div className="leftHeader flex bg-headerColor">
             <img
               className="Logo m-7 p-0 w-18 h-24"
               src={process.env.PUBLIC_URL + "/images/레이니_배경삭제.png"}
@@ -19,7 +19,7 @@ const Header = () => {
       </div>
 
       <div className="flex justify-center">
-        <div className="MenuBar bg-menuColor gap-3 text-3xl my-3 flex justify-center text-white py-3 rounded-3xl w-1/2 max-sm:h-12 max-sm:text-lg max-sm:px-1">
+        <div className="MenuBar bg-menuColor gap-3 text-3xl my-3 flex justify-center text-white py-3 rounded-3xl w-1/2 max-sm:h-12 max-sm:text-xl max-sm:px-1">
           <div className="hover:text-black">
             <Link to="/">홈</Link>
           </div>

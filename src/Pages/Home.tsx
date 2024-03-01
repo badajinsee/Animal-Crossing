@@ -1,23 +1,17 @@
+import Species from "../Components/Species";
 import { villagers } from "animal-crossing";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  // 주민 불러오기
-  const animal = villagers.map((villager) => villager);
+  // input에 입력한 값 저장 | 사용자 입력 상태 저장
+  const [inputValue, setInputValue] = useState("");
 
   // 주민 이름 불러오기 (Input)
   const animalName = villagers.map((villager) => ({
     eng: villager.name,
     ko: villager.translations.kRko,
   }));
-
-  // 주민 종류 불러오기
-  // const animlalSpecies = [...new Set(villagers.map((v) => v.species))];
-  // console.log(animlalSpecies);
-
-  // input에 입력한 값 저장 | 사용자 입력 상태 저장
-  const [inputValue, setInputValue] = useState("");
 
   // 네비게이트 | 동물 상세페이지 이동
   const navigate = useNavigate();
@@ -32,15 +26,16 @@ const Home = () => {
   };
 
   const onSearchClick = () => {
+    if (inputValue === "") {
+      alert("동물을 입력하세요 !");
+      navigate("");
+      return;
+    }
     const matchAnimal = animalName.find((animal) => animal.ko === inputValue);
     if (matchAnimal) {
       navigate(`/Vilager/${matchAnimal.eng}`);
     } else {
       navigate(`/Vilager/${inputValue}`);
-    }
-    if (inputValue !== null) {
-      alert("동물을 입력하세요 !");
-      navigate("");
     }
   };
 
@@ -51,15 +46,6 @@ const Home = () => {
           Search
         </label>
         <div className="relative">
-          <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-            <svg
-              className="w-4 h-4 text-gray-500 dark:text-gray-400"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 20 20"
-            ></svg>
-          </div>
           <input
             type="search"
             id="default-search"
@@ -79,22 +65,21 @@ const Home = () => {
         </div>
       </form>
 
-      <div className="flex flex-wrap justify-center gap-2 items-center">
-        {animal.map((villager, index) => (
-          <Link key={index} to={`/Vilager/${villager.name}`}>
-            <div className="border" key={index}>
-              <h1 className="text-2xl text-center">
-                {villager.translations.kRko}
-              </h1>
-              <img
-                className="w-24"
-                src={villager.iconImage}
-                alt={villager.iconImage}
-              />
-            </div>
-          </Link>
-        ))}
+      <div className="flex justify-end mr-20 max-sm:justify-center max-sm:mr-0">
+        <form className="max-w-sm mb-3 w-56 ">
+          <label
+            id="countries"
+            className=" mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            동물 정렬 옵션을 선택하세요
+          </label>
+          <select className=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500  w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500 ">
+            <option selected>동물 종</option>
+            <option>동물 성격</option>
+          </select>
+        </form>
       </div>
+      <Species />
     </div>
   );
 };
