@@ -11,4 +11,7 @@ declare interface VillagerType {
   photoImage: string;
   iconImage: string;
   houseImage: string | null;
+  catchphrases: {
+    kRko: string;
+  };
 }

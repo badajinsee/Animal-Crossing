@@ -1,4 +1,5 @@
 import Species from "../Components/Species";
+import Personality from "../Components/Personality";
 import { villagers } from "animal-crossing";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -28,7 +29,6 @@ const Home = () => {
   const onSearchClick = () => {
     if (inputValue === "") {
       alert("동물을 입력하세요 !");
-      navigate("");
       return;
     }
     const matchAnimal = animalName.find((animal) => animal.ko === inputValue);
@@ -38,6 +38,9 @@ const Home = () => {
       navigate(`/Vilager/${inputValue}`);
     }
   };
+
+  // select 요소
+  const [sortType, setSortType] = useState("true");
 
   return (
     <div>
@@ -73,13 +76,17 @@ const Home = () => {
           >
             동물 정렬 옵션을 선택하세요
           </label>
-          <select className=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500  w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500 ">
-            <option selected>동물 종</option>
-            <option>동물 성격</option>
+          <select
+            defaultValue={sortType}
+            onChange={(e) => setSortType(e.target.value)}
+            className=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500  w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500 "
+          >
+            <option value="true">동물 종</option>
+            <option value="false">동물 성격</option>
           </select>
         </form>
       </div>
-      <Species />
+      {sortType === "true" ? <Species /> : <Personality />}
     </div>
   );
 };

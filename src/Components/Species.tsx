@@ -3,14 +3,13 @@ import { SpeciesToKorean } from "../utils/AnimalKr";
 import { villagers } from "animal-crossing";
 
 const Species = () => {
-  console.log("TEST 1");
   // 주민 종류 불러오기
   const animalSpecies = [...new Set(villagers.map((v) => v.species))];
 
   // 주민 타이틀 불러오기 | 한글로 번역
-  const speciesTitle = animalSpecies.map((species) => {
-    species = SpeciesToKorean(species);
-    return species;
+  const speciesTitle = animalSpecies.map((animalS) => {
+    animalS = SpeciesToKorean(animalS);
+    return animalS;
   });
 
   return (
@@ -20,12 +19,12 @@ const Species = () => {
           <div className="flex justify-center mb-7 text-3xl">
             <h2>{speciesTitle[index]}</h2>
           </div>
-          <div className="flex flex-wrap justify-center gap-2">
+          <div className="flex flex-wrap justify-center gap-2 ">
             {villagers
               .filter((villager) => villager.species === species)
               .map((villager) => (
                 <Link to={`/Vilager/${villager.name}`} key={villager.name}>
-                  <div className="border">
+                  <div className="border bg-emerald-50">
                     <h1 className="text-2xl text-center">
                       {villager.translations.kRko}
                     </h1>
