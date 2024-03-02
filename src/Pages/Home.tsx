@@ -1,6 +1,8 @@
 import Species from "../Components/Species";
 import Personality from "../Components/Personality";
+
 import { villagers } from "animal-crossing";
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
