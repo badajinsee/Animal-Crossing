@@ -24,7 +24,7 @@ const Furniture = () => {
         <option value="false">가구</option>
       </select>
 
-      {sortType === "true" ? <Miscellaneous /> : <Furniture />}
+      {sortType === "true" ? <Miscellaneous /> : <Housewares />}
     </div>
   );
 };
