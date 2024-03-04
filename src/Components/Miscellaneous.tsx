@@ -1,4 +1,5 @@
 import { items } from "animal-crossing";
+import { Link } from "react-router-dom";
 
 // 잡화
 const Miscellaneous = () => {
@@ -8,13 +9,14 @@ const Miscellaneous = () => {
   );
 
   return (
-    <div className="flex flex-wrap justify-center items-center">
+    <div className="flex flex-wrap justify-center ">
       {generalMerchandise.map((item) => {
         if (item.image) {
           return (
-            <div
+            <Link
+              to={`/FurnitureDetail/${encodeURIComponent(item.name)}`}
               key={item.name}
-              className="flex-row flex-wrap justify-center gap-4 text-xl w-48 h-42 overflow-hidden whitespace-normal  m-6  rounded-lg border-2 hover:border-dotted border-green-300 p-3 bg-neutral-100 hover:bg-white  "
+              className="flex-row flex-wrap justify-center gap-4 text-xl w-46 h-42 overflow-hidden whitespace-normal  m-6  rounded-lg border-2 hover:border-dotted border-green-300 p-3 bg-neutral-100 hover:bg-white  "
             >
               <h1
                 className={`text-center ${
@@ -26,13 +28,14 @@ const Miscellaneous = () => {
                 {item.translations?.kRko}
               </h1>
               <img className="m-auto" src={item.image} alt="이미지" />
-            </div>
+            </Link>
           );
         } else {
           return (
-            <div
+            <Link
+              to={`/FurnitureDetail/${encodeURIComponent(item.name)}`}
               key={item.name}
-              className="flex-row flex-wrap justify-center gap-4 text-xl w-48 h-42 overflow-hidden whitespace-normal  m-6  rounded-lg border-2 hover:border-dotted border-green-300 p-3  bg-neutral-100 hover:bg-white "
+              className="flex-row flex-wrap justify-center gap-4 text-xl w-46 h-42 overflow-hidden whitespace-normal  m-6  rounded-lg border-2 hover:border-dotted border-green-300 p-3  bg-neutral-100 hover:bg-white "
             >
               <h1
                 className={`text-center ${
@@ -48,7 +51,7 @@ const Miscellaneous = () => {
                 src={item.variations?.[0]?.image}
                 alt="이미지"
               />
-            </div>
+            </Link>
           );
         }
       })}

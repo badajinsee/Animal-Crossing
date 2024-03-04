@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 const Footer = () => {
   const handleScrollTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });

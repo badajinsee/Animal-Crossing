@@ -22,7 +22,10 @@ function App() {
             <Route path="/Vilager/:name" element={<Vilager />} />
             <Route path="/Flower" element={<Flower />} />
             <Route path="/Furniture" element={<Furniture />} />
-            <Route path="/FurnitureDetail" element={<FurnitureDetail />} />
+            <Route
+              path="/FurnitureDetail/:itemname"
+              element={<FurnitureDetail />}
+            />
             <Route path="/Acc" element={<Acc />} />
           </Routes>
         </div>

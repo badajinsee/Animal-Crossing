@@ -3,8 +3,10 @@ import { PersonalityToKorean } from "../utils/AnimalKr";
 import { Link } from "react-router-dom";
 
 const Personality = () => {
+  // 주민성향 불러오기
   const animalPersonality = [...new Set(villagers.map((p) => p.personality))];
 
+  //주민 성향 한국어 번역
   const PersonalityTitle = animalPersonality.map((animalP) => {
     animalP = PersonalityToKorean(animalP);
     return animalP;
@@ -22,7 +24,7 @@ const Personality = () => {
               .filter((villager) => villager.personality === personality)
               .map((villager) => (
                 <Link to={`/Vilager/${villager.name}`} key={villager.name}>
-                  <div className="border bg-emerald-50">
+                  <div className="border hover:border-dotted bg-emerald-50 hover:bg-white">
                     <h1 className="text-2xl text-center">
                       {villager.translations.kRko}
                     </h1>

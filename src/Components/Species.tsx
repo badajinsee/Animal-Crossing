@@ -6,7 +6,7 @@ const Species = () => {
   // 주민 종류 불러오기
   const animalSpecies = [...new Set(villagers.map((v) => v.species))];
 
-  // 주민 타이틀 불러오기 | 한글로 번역
+  // 주민 종류 한글로 번역
   const speciesTitle = animalSpecies.map((animalS) => {
     animalS = SpeciesToKorean(animalS);
     return animalS;
@@ -24,7 +24,7 @@ const Species = () => {
               .filter((villager) => villager.species === species)
               .map((villager) => (
                 <Link to={`/Vilager/${villager.name}`} key={villager.name}>
-                  <div className="border bg-emerald-50">
+                  <div className="border hover:border-dotted bg-emerald-50 hover:bg-white">
                     <h1 className="text-2xl text-center">
                       {villager.translations.kRko}
                     </h1>
