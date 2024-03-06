@@ -1,18 +1,16 @@
-import { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+
 const FurnitureSearch = () => {
   const location = useLocation();
 
-  // location.state가 undefined인 경우를 대비하여 기본값을 설정합니다.
+  // location.state가 undefined인 경우를 대비하여 기본값을 설정
   const state = location.state || {};
 
+  // 매치 아이템
   const matchedItems = state.matchItem || [];
 
+  // 입력한 값
   const inputValue = state.inputValue;
-
-  useEffect(() => {
-    console.log(location);
-  }, [location]);
 
   return (
     <>
@@ -52,7 +50,7 @@ const FurnitureSearch = () => {
                 </div>
               );
             } else {
-              return <div>"알맞은 이미지를 찾을수가 없습니다 !"</div>;
+              return <div>"알맞은 이미지를 찾을수가 없습니다."</div>;
             }
           }
         )}

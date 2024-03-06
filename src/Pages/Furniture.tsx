@@ -19,14 +19,17 @@ const Furniture = () => {
     setInputValue(inputKoreaItemName);
   };
 
+  // sourcesheet를 가구와 잡화만 filter
   const generalItem = items.filter(
     (f) => f.sourceSheet === "Miscellaneous" || f.sourceSheet === "Housewares"
   );
 
+  // 가구와 잡화에서 선언
   const itemName = generalItem.map((item) => ({
     eng: item.name,
     ko: item.translations?.kRko,
     imageUrl: item.image,
+    // 종류가 다양한 배열에서 이미지의 0번째 이미지만 가져옴
     variationsImg:
       item.variations && item.variations.length > 0
         ? item.variations[0].image
@@ -35,11 +38,12 @@ const Furniture = () => {
 
   const onSearchClick = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    // 아무것도 입력하지 않았을 경우
     if (inputValue === "") {
       alert("가구/잡화를 입력하세요 !");
       return;
     }
-
+    // 필터 이용해서 입력한 값이 includes 되는 가구 찾기
     const matchItem = itemName.filter((item) => item.ko?.includes(inputValue));
     navigate(`/FurnitureSearch`, {
       state: { matchItem, inputValue },
