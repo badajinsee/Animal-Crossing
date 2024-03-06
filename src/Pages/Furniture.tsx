@@ -14,18 +14,23 @@ const Furniture = () => {
 
   const [inputValue, setInputValue] = useState("");
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-  };
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputKoreaItemName = e.target.value;
     setInputValue(inputKoreaItemName);
   };
 
-  const itemName = items.map((item) => ({
+  const generalItem = items.filter(
+    (f) => f.sourceSheet === "Miscellaneous" || f.sourceSheet === "Housewares"
+  );
+
+  const itemName = generalItem.map((item) => ({
     eng: item.name,
     ko: item.translations?.kRko,
+    imageUrl: item.image,
+    variationsImg:
+      item.variations && item.variations.length > 0
+        ? item.variations[0].image
+        : null,
   }));
 
   const onSearchClick = (e: React.FormEvent<HTMLFormElement>) => {
@@ -34,12 +39,11 @@ const Furniture = () => {
       alert("가구/잡화를 입력하세요 !");
       return;
     }
-    const matchItem = itemName.find((item) => item.ko === inputValue);
-    if (matchItem) {
-      navigate(`/FurnitureDetail/${matchItem.eng}`);
-    } else {
-      navigate(`/FurnitureDetail/${inputValue}`);
-    }
+
+    const matchItem = itemName.filter((item) => item.ko?.includes(inputValue));
+    navigate(`/FurnitureSearch`, {
+      state: { matchItem, inputValue },
+    });
   };
 
   return (
@@ -84,7 +88,6 @@ const Furniture = () => {
                   d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
                 />
               </svg>
-              {/* <span className="sr-only">Search</span> */}
             </button>
           </div>
         </div>
