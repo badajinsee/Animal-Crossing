@@ -3,7 +3,7 @@ import Personality from "../Components/Personality";
 
 import { villagers } from "animal-crossing";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
@@ -42,6 +42,25 @@ const Home = () => {
 
   // select 요소
   const [sortType, setSortType] = useState("true");
+
+  // 주민 생일
+  const [birthdayVillager, setBirthVillager] = useState<VillagerType | null>(
+    null
+  );
+
+  useEffect(() => {
+    // 현재 날짜
+    const today = new Date();
+    const month = today.getMonth() + 1;
+    const date = today.getDate();
+
+    // 오늘 생일인 동물 찾기
+    const villager = villagers.find((villager) => {
+      const [birthMonth, birthDate] = villager.birthday.split("/").map(Number);
+      return birthMonth === month && birthDate === date;
+    });
+    setBirthVillager(villager || null);
+  }, []);
 
   return (
     <div>
@@ -101,6 +120,9 @@ const Home = () => {
           </select>
         </form>
       </div>
+      {birthdayVillager && (
+        <p>오늘은 {birthdayVillager.translations.kRko}의 생일이에요!</p>
+      )}
       {sortType === "true" ? <Species /> : <Personality />}
     </div>
   );
