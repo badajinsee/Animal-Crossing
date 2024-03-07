@@ -4,7 +4,7 @@ import Personality from "../Components/Personality";
 import { villagers } from "animal-crossing";
 
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Home = () => {
   // input에 입력한 값 저장 | 사용자 입력 상태 저장
@@ -18,8 +18,6 @@ const Home = () => {
 
   // 네비게이트 | 동물 상세페이지 이동
   const navigate = useNavigate();
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {};
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputKoreanName = e.target.value;
@@ -44,7 +42,7 @@ const Home = () => {
   const [sortType, setSortType] = useState("true");
 
   // 주민 생일
-  const [birthdayVillager, setBirthVillager] = useState<VillagerType | null>(
+  const [birthdayVillager, setBirthVillager] = useState<VillagerType[] | null>(
     null
   );
 
@@ -53,18 +51,36 @@ const Home = () => {
     const today = new Date();
     const month = today.getMonth() + 1;
     const date = today.getDate();
+    // const month = 8;
+    // const date = 11;
 
     // 오늘 생일인 동물 찾기
-    const villager = villagers.find((villager) => {
+    const villager = villagers.filter((villager) => {
       const [birthMonth, birthDate] = villager.birthday.split("/").map(Number);
       return birthMonth === month && birthDate === date;
     });
-    setBirthVillager(villager || null);
+    setBirthVillager(villager.length ? villager : []);
   }, []);
+
+  // 생일 같은 주민
+
+  // useEffect(() => {
+  //   const sameBirth = [];
+
+  //   for (let i = 0; i < villagers.length; i++) {
+  //     for (let j = i + 1; j < villagers.length; j++) {
+  //       if (villagers[i].birthday === villagers[j].birthday) {
+  //         sameBirth.push(villagers[i]);
+  //         sameBirth.push(villagers[j]);
+  //       }
+  //     }
+  //   }
+  //   console.log(sameBirth);
+  // }, []);
 
   return (
     <div>
-      <form className="max-w-md mx-auto m-10" onSubmit={handleSubmit}>
+      <form className="max-w-md mx-auto m-10">
         <div className="relative">
           <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
             <svg
@@ -102,7 +118,29 @@ const Home = () => {
         </div>
       </form>
 
-      <div className="flex justify-end mr-20 max-sm:justify-center max-sm:mr-0">
+      <div className="rounded-xl border my-3 max-w-sm mx-auto bg-green-600">
+        {birthdayVillager &&
+          birthdayVillager.map((villager, index) => (
+            <Link
+              to={`Vilager/${villager.name}`}
+              className="flex items-center justify-center w-full py-1"
+              key={index}
+            >
+              <img
+                className="w-16"
+                src={villager.iconImage}
+                alt={villager.translations.kRko}
+              />
+              <p className="text-2xl text-white">
+                오늘은 {villager.translations.kRko}의 생일이에요!
+              </p>
+            </Link>
+          ))}
+      </div>
+
+      <div className="border-b-4"></div>
+
+      <div className="flex justify-end mr-20 max-sm:justify-center max-sm:mr-0 mt-3">
         <form className="max-w-sm mb-3 w-56 ">
           <label
             id="countries"
@@ -120,9 +158,7 @@ const Home = () => {
           </select>
         </form>
       </div>
-      {birthdayVillager && (
-        <p>오늘은 {birthdayVillager.translations.kRko}의 생일이에요!</p>
-      )}
+
       {sortType === "true" ? <Species /> : <Personality />}
     </div>
   );
