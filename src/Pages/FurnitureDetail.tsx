@@ -8,14 +8,6 @@ const FurnitureDetail = () => {
 
   const item = items.find((item) => item.name.trim() === itemName);
 
-  // const catalog = items.map((item) => item.source);
-  // const catalog = items
-  //   .filter((item) => item.catalog === undefined)
-  //   .map((item) => item.name);
-  // const catalog2 = new Set(catalog);
-
-  // console.log(catalog);
-
   // 카탈로그 번역
   const catalogKr: Record<string, string> = {
     Seasonal: "너굴쇼핑(시즌 아이템)",
@@ -100,18 +92,25 @@ const FurnitureDetail = () => {
           </div>
         </div>
       </div>
-      {/* 
-      <div className="grid">
+
+      <div>
         {item?.variations ? (
-          <div key={item.name}>
-            {item.variations.map((variaition) => (
-              <img src={variaition.image} alt="" />
-            ))}
+          <div className="snap-center border  border-lime-400 rounded-md p-5 mb-10 mt-8 ">
+            <span className="text-2xl">🎨 리폼 종류</span>
+            <div
+              className="grid grid-cols-8 max-sm:grid-cols-3 gap-4 auto-cols-max"
+              key={item.name}
+            >
+              {item.variations.map((variaition) => (
+                <div className="flex flex-col justify-center items-center ">
+                  <img src={variaition.image} alt="" />
+                  <h2>{variaition.variantTranslations?.kRko}</h2>
+                </div>
+              ))}
+            </div>
           </div>
-        ) : (
-          <div></div>
-        )}
-      </div> */}
+        ) : null}
+      </div>
     </>
   );
 };
