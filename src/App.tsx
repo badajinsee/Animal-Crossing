@@ -1,5 +1,12 @@
 import "./App.css";
-
+import React from "react";
+import {
+  RecoilRoot,
+  atom,
+  selector,
+  useRecoilState,
+  useRecoilValue,
+} from "recoil";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Home from "./Pages/Home";
@@ -15,24 +22,26 @@ import Footer from "./Components/Footer";
 function App() {
   return (
     <BrowserRouter>
-      <div className="flex flex-col min-h-screen">
-        <Header />
-        <div className="flex-grow w-full px-3 ">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/Vilager/:name" element={<Vilager />} />
-            <Route path="/Flower" element={<Flower />} />
-            <Route path="/Furniture" element={<Furniture />} />
-            <Route
-              path="/FurnitureDetail/:itemname"
-              element={<FurnitureDetail />}
-            />
-            <Route path="/FurnitureSearch" element={<FurnitureSearch />} />
-            <Route path="/Acc" element={<Acc />} />
-          </Routes>
+      <RecoilRoot>
+        <div className="flex flex-col min-h-screen">
+          <Header />
+          <div className="flex-grow w-full px-3 ">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/Vilager/:name" element={<Vilager />} />
+              <Route path="/Flower" element={<Flower />} />
+              <Route path="/Furniture" element={<Furniture />} />
+              <Route
+                path="/FurnitureDetail/:itemname"
+                element={<FurnitureDetail />}
+              />
+              <Route path="/FurnitureSearch" element={<FurnitureSearch />} />
+              <Route path="/Acc" element={<Acc />} />
+            </Routes>
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
+      </RecoilRoot>
     </BrowserRouter>
   );
 }
