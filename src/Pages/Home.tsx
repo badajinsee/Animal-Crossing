@@ -63,7 +63,6 @@ const Home = () => {
   }, []);
 
   // 생일 같은 주민
-
   // useEffect(() => {
   //   const sameBirth = [];
 
