@@ -27,7 +27,7 @@ const Header = () => {
             <Link to="/Furniture">가구</Link>
           </div>
           <div className="hover:text-black">
-            <Link to="/Flower">꽃교배</Link>
+            <Link to="/Encyclopedia">도감</Link>
           </div>
           <div className="hover:text-black">
             <Link to="/Acc">기타사이트</Link>

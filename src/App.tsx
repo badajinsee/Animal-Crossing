@@ -1,5 +1,4 @@
 import "./App.css";
-import React from "react";
 import {
   RecoilRoot,
   atom,
@@ -11,7 +10,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Home from "./Pages/Home";
 import Vilager from "./Pages/Vilager";
-import Flower from "./Pages/Flower";
+import Encyclopedia from "./Pages/Encyclopedia";
 import Furniture from "./Pages/Furniture";
 import FurnitureDetail from "./Pages/FurnitureDetail";
 import FurnitureSearch from "./Pages/FurnitureSearch";
@@ -29,7 +28,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/Vilager/:name" element={<Vilager />} />
-              <Route path="/Flower" element={<Flower />} />
+              <Route path="/Encyclopedia" element={<Encyclopedia />} />
               <Route path="/Furniture" element={<Furniture />} />
               <Route
                 path="/FurnitureDetail/:itemname"
