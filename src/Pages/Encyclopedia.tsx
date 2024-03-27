@@ -1,5 +1,46 @@
 import { creatures } from "animal-crossing";
 import React, { useState } from "react";
+import Modal from "react-modal";
+
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+  },
+};
+
+interface Creature {
+  name: string;
+  iconImage: string;
+  translations: {
+    kRko: string;
+  };
+  hemispheres: {
+    north: {
+      time: string[];
+      months: string[];
+    };
+  };
+  sell: number;
+  size: string;
+  whereHow?: string;
+}
+
+// 필요한 속성들을 모두 포함하는 SimpleCreature 타입 정의
+type SimpleCreature = Pick<
+  Creature,
+  | "name"
+  | "iconImage"
+  | "translations"
+  | "hemispheres"
+  | "sell"
+  | "size"
+  | "whereHow"
+>;
 
 const Encyclopedia = () => {
   // 물고기, 곤충, 해산물 select state
@@ -8,12 +49,34 @@ const Encyclopedia = () => {
   // day select state
   const [daySelected, setDaySelected] = useState("whole");
 
+  // 모달 state
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  // 모달 선택된 생물의 상태
+  const [selectedCreature, setSelectedCreature] = useState<Creature | null>(
+    null
+  );
+
+  function openModal(creature: SimpleCreature) {
+    // 모달을 열 때 선택된 생물의 정보를 저장
+    setSelectedCreature(creature);
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+    // 모달을 닫을 때 선택된 생물의 상태를 초기화
+    setSelectedCreature(null);
+  }
+
   // 물고기, 곤충, 해산물 selectoption
   const selectOptions = [
     { value: "fish", name: "물고기" },
     { value: "insects", name: "곤충" },
     { value: "seaCreatures", name: "해산물" },
   ];
+
+  console.log(selectedCreature);
 
   // 물고기, 곤충, 해산물 handle
   const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -92,14 +155,34 @@ const Encyclopedia = () => {
 
       <div>
         {filterCreatures.map((creature, index) => (
-          <div key={index}>
+          <div
+            key={index}
+            onClick={() => {
+              openModal(creature);
+            }}
+          >
             <img src={creature?.iconImage} alt="" />
             <span className="border-b-2"></span>
-            <span>{creature?.translations.kRko}</span>
-            <span>{creature.hemispheres.north.monthsArray}</span>
           </div>
         ))}
       </div>
+
+      {selectedCreature && (
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          ariaHideApp={false}
+          style={customStyles}
+        >
+          <img src={selectedCreature.iconImage} alt="" />
+          <span>{selectedCreature.translations.kRko}</span>
+          <span>장소: {selectedCreature.whereHow}</span>
+          <span>시간: {selectedCreature.hemispheres.north.time}</span>
+          <span>시기: {selectedCreature.hemispheres.north.months}</span>
+          <span>가격: {selectedCreature.sell}</span>
+          <span>시기:{selectedCreature.size}</span>
+        </Modal>
+      )}
     </>
   );
 };
