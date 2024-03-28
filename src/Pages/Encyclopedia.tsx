@@ -58,14 +58,14 @@ const Encyclopedia = () => {
   );
 
   function openModal(creature: SimpleCreature) {
-    // 모달을 열 때 선택된 생물의 정보를 저장
+    // 모달을 열 때 선택된 생물의 정보 저장
     setSelectedCreature(creature);
     setIsOpen(true);
   }
 
   function closeModal() {
     setIsOpen(false);
-    // 모달을 닫을 때 선택된 생물의 상태를 초기화
+    // 모달을 닫을 때 선택된 생물의 상태 초기화
     setSelectedCreature(null);
   }
 
@@ -136,24 +136,35 @@ const Encyclopedia = () => {
   });
 
   return (
-    <>
-      <h1>도감</h1>
-      <select onChange={handleSelect} value={selected}>
-        {selectOptions.map((item) => (
-          <option key={item.value} value={item.value}>
-            {item.name}
-          </option>
-        ))}
-      </select>
-      <select onChange={handleDaySelect} value={daySelected}>
-        {daySelectOption.map((item) => (
-          <option key={item.value} value={item.value}>
-            {item.name}
-          </option>
-        ))}
-      </select>
+    <div>
+      <div className="flex">
+        <select
+          onChange={handleSelect}
+          value={selected}
+          className="  block py-2.5 px-0 text-md bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+        >
+          {selectOptions.map((item) => (
+            <option key={item.value} value={item.value}>
+              {item.name}
+            </option>
+          ))}
+        </select>
+        <select
+          onChange={handleDaySelect}
+          value={daySelected}
+          className="block py-2.5 px-0 text-md bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+        >
+          {daySelectOption.map((item) => (
+            <option key={item.value} value={item.value}>
+              {item.name}
+            </option>
+          ))}
+        </select>
+      </div>
 
-      <div>
+      <div className="mt-2">총 개수: {filterCreatures.length}</div>
+
+      <div className="grid grid-cols-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mt-10 text-center">
         {filterCreatures.map((creature, index) => (
           <div
             key={index}
@@ -161,8 +172,12 @@ const Encyclopedia = () => {
               openModal(creature);
             }}
           >
-            <img src={creature?.iconImage} alt="" />
-            <span className="border-b-2"></span>
+            <div className="flex flex-col border rounded-lg p-3">
+              <img className="border-b-2" src={creature?.iconImage} alt="" />
+              <span className="break-all overflow-hidden text-ellipsis whitespace-nowrap">
+                {creature.translations.kRko}
+              </span>
+            </div>
           </div>
         ))}
       </div>
@@ -174,16 +189,44 @@ const Encyclopedia = () => {
           ariaHideApp={false}
           style={customStyles}
         >
-          <img src={selectedCreature.iconImage} alt="" />
-          <span>{selectedCreature.translations.kRko}</span>
-          <span>장소: {selectedCreature.whereHow}</span>
-          <span>시간: {selectedCreature.hemispheres.north.time}</span>
-          <span>시기: {selectedCreature.hemispheres.north.months}</span>
-          <span>가격: {selectedCreature.sell}</span>
-          <span>시기:{selectedCreature.size}</span>
+          <div className="flex flex-col justify-center text-center items-center p-16">
+            <div>
+              <span className="text-2xl break-words">
+                {selectedCreature.translations.kRko}
+              </span>
+              <img
+                src={selectedCreature.iconImage}
+                alt={selectedCreature.translations.kRko + `img`}
+              />
+            </div>
+
+            <div className="flex justify-center">
+              <div className="flex flex-col text-xl mr-7">
+                <span className="text-xl text-slate-500 mb-2">장소:</span>
+                <span className="text-xl text-slate-500 mb-2">시간:</span>
+                <span className="text-xl text-slate-500 mb-2">시기:</span>
+                <span className="text-xl text-slate-500 mb-2">가격:</span>
+                <span className="text-xl text-slate-500 mb-2">크기:</span>
+              </div>
+
+              <div className="flex flex-col">
+                <span className="text-xl mb-2">
+                  {selectedCreature.whereHow}
+                </span>
+                <span className="text-xl mb-2">
+                  {selectedCreature.hemispheres.north.time}
+                </span>
+                <span className="text-xl mb-2">
+                  {selectedCreature.hemispheres.north.months}
+                </span>
+                <span className="text-xl mb-2">{selectedCreature.sell} 벨</span>
+                <span className="text-xl mb-2">{selectedCreature.size}</span>
+              </div>
+            </div>
+          </div>
         </Modal>
       )}
-    </>
+    </div>
   );
 };
 
