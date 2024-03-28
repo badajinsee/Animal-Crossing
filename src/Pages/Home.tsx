@@ -51,8 +51,6 @@ const Home = () => {
     const today = new Date();
     const month = today.getMonth() + 1;
     const date = today.getDate();
-    // const month = 8;
-    // const date = 11;
 
     // 오늘 생일인 동물 찾기
     const villager = villagers.filter((villager) => {
@@ -61,21 +59,6 @@ const Home = () => {
     });
     setBirthVillager(villager.length ? villager : []);
   }, []);
-
-  // 생일 같은 주민
-  // useEffect(() => {
-  //   const sameBirth = [];
-
-  //   for (let i = 0; i < villagers.length; i++) {
-  //     for (let j = i + 1; j < villagers.length; j++) {
-  //       if (villagers[i].birthday === villagers[j].birthday) {
-  //         sameBirth.push(villagers[i]);
-  //         sameBirth.push(villagers[j]);
-  //       }
-  //     }
-  //   }
-  //   console.log(sameBirth);
-  // }, []);
 
   return (
     <div>
