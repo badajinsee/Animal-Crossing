@@ -1,8 +1,11 @@
 import { villagers } from "animal-crossing";
 import { PersonalityToKorean } from "../utils/AnimalKr";
 import { Link } from "react-router-dom";
+import React, { useState } from "react";
 
 const Personality = () => {
+  const [personalitySelected, setPersonalitySelected] = useState("Jock");
+
   // 주민성향 불러오기
   const animalPersonality = [...new Set(villagers.map((p) => p.personality))];
 
@@ -12,8 +15,30 @@ const Personality = () => {
     return animalP;
   });
 
+  //
+  const personalityOption = [
+    { value: "Jock", name: "운동광" },
+    { value: "Cranky", name: "무뚝뚝" },
+    { value: "Peppy", name: "아이돌" },
+    { value: "Big Sister", name: "단순활발" },
+    { value: "Lazy", name: "먹보" },
+    { value: "Normal", name: "친절함" },
+    { value: "Snooty", name: "느끼함" },
+  ];
+
+  const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setPersonalitySelected(e.target.value);
+  };
+
   return (
     <div>
+      <select onChange={handleSelect} value={personalitySelected}>
+        {personalityOption.map((item) => (
+          <option key={item.value} value={item.value}>
+            {item.name}
+          </option>
+        ))}
+      </select>
       {animalPersonality.map((personality, index) => (
         <div className="mb-20" key={personality}>
           <div className="flex justify-center mb-7 text-3xl">
