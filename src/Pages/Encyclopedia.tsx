@@ -200,27 +200,72 @@ const Encyclopedia = () => {
               />
             </div>
 
-            <div className="flex justify-center">
+            <div className="flex flex-wrap justify-center">
               <div className="flex flex-col text-xl mr-7">
-                <span className="text-xl text-slate-500 mb-2">장소:</span>
-                <span className="text-xl text-slate-500 mb-2">시간:</span>
-                <span className="text-xl text-slate-500 mb-2">시기:</span>
-                <span className="text-xl text-slate-500 mb-2">가격:</span>
-                <span className="text-xl text-slate-500 mb-2">크기:</span>
-              </div>
+                <div className="flex flex-wrap">
+                  {selectedCreature.whereHow && (
+                    <>
+                      <span className="text-xl text-slate-500 mb-1 mr-3">
+                        장소:
+                      </span>
+                      <span className="text-xl mb-1">
+                        {selectedCreature.whereHow}
+                      </span>
+                    </>
+                  )}
+                </div>
 
-              <div className="flex flex-col">
-                <span className="text-xl mb-2">
-                  {selectedCreature.whereHow}
-                </span>
-                <span className="text-xl mb-2">
-                  {selectedCreature.hemispheres.north.time}
-                </span>
-                <span className="text-xl mb-2">
-                  {selectedCreature.hemispheres.north.months}
-                </span>
-                <span className="text-xl mb-2">{selectedCreature.sell} 벨</span>
-                <span className="text-xl mb-2">{selectedCreature.size}</span>
+                <div className="flex flex-wrap">
+                  {selectedCreature.hemispheres.north.time && (
+                    <>
+                      <span className="text-xl text-slate-500 mb-2 mr-3">
+                        시간:
+                      </span>
+                      <span className="text-xl mb-1">
+                        {selectedCreature.hemispheres.north.time}
+                      </span>
+                    </>
+                  )}
+                </div>
+
+                <div className="flex flex-wrap">
+                  {selectedCreature.hemispheres.north.months && (
+                    <>
+                      <span className="text-xl text-slate-500 mb-2 mr-3">
+                        시기:
+                      </span>
+                      <span className="text-xl mb-2">
+                        {selectedCreature.hemispheres.north.months}
+                      </span>
+                    </>
+                  )}
+                </div>
+
+                <div className="flex flex-wrap">
+                  {selectedCreature.sell && (
+                    <>
+                      <span className="text-xl text-slate-500 mb-2 mr-3">
+                        가격:
+                      </span>
+                      <span className="text-xl mb-2">
+                        {selectedCreature.sell} 벨
+                      </span>
+                    </>
+                  )}
+                </div>
+
+                <div className="flex flex-wrap">
+                  {selectedCreature.size && (
+                    <>
+                      <span className="text-xl text-slate-500 mb-2 mr-3">
+                        크기:
+                      </span>
+                      <span className="text-xl mb-2">
+                        {selectedCreature.size}
+                      </span>
+                    </>
+                  )}
+                </div>
               </div>
             </div>
           </div>
