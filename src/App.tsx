@@ -9,7 +9,7 @@ import {
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Home from "./Pages/Home";
-import Vilager from "./Pages/Vilager";
+import Villager from "./Pages/Villager";
 import Encyclopedia from "./Pages/Encyclopedia";
 import Furniture from "./Pages/Furniture";
 import FurnitureDetail from "./Pages/FurnitureDetail";
@@ -27,7 +27,7 @@ function App() {
           <div className="flex-grow w-full px-3 ">
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/Vilager/:name" element={<Vilager />} />
+              <Route path="/Villager/:name" element={<Villager />} />
               <Route path="/Encyclopedia" element={<Encyclopedia />} />
               <Route path="/Furniture" element={<Furniture />} />
               <Route

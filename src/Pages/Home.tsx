@@ -32,9 +32,9 @@ const Home = () => {
 
     const matchAnimal = animalName.find((animal) => animal.ko === inputValue);
     if (matchAnimal) {
-      navigate(`/Vilager/${matchAnimal.eng}`);
+      navigate(`/Villager/${matchAnimal.eng}`);
     } else {
-      navigate(`/Vilager/${inputValue}`);
+      navigate(`/Villager/${inputValue}`);
     }
   };
 
@@ -104,7 +104,7 @@ const Home = () => {
         {birthdayVillager &&
           birthdayVillager.map((villager, index) => (
             <Link
-              to={`Vilager/${villager.name}`}
+              to={`Villager/${villager.name}`}
               className="flex items-center justify-center w-full py-1"
               key={index}
             >
