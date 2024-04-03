@@ -90,7 +90,7 @@ const Personality = () => {
         <div className="flex flex-wrap item-left justify-center gap-2 mt-10 mb-20">
           {filterVillagers().map((villager) => (
             <div className=" justify-center gap-2" key={villager.name}>
-              <Link to={`/Vilager/${villager.name}`}>
+              <Link to={`/Villager/${villager.name}`}>
                 <div className="border hover:border-dotted bg-emerald-50 hover:bg-white">
                   <h1 className="text-2xl text-center">
                     {villager.translations.kRko}
