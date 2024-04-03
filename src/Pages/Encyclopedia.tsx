@@ -47,7 +47,7 @@ const Encyclopedia = () => {
   const [selected, setSelected] = useState("fish");
 
   // day select state
-  const [daySelected, setDaySelected] = useState("whole");
+  const [daySelected, setDaySelected] = useState("All");
 
   // 모달 state
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -76,8 +76,6 @@ const Encyclopedia = () => {
     { value: "seaCreatures", name: "해산물" },
   ];
 
-  console.log(selectedCreature);
-
   // 물고기, 곤충, 해산물 handle
   const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelected(e.target.value);
@@ -85,7 +83,7 @@ const Encyclopedia = () => {
 
   // day selectoption
   const daySelectOption = [
-    { value: "whole", name: "전체" },
+    { value: "All", name: "전체" },
     { value: "january", name: "1월" },
     { value: "february", name: "2월" },
     { value: "march", name: "3월" },
@@ -111,7 +109,7 @@ const Encyclopedia = () => {
       (item) => item.value === daySelected
     );
 
-    if (daySelected === "whole") {
+    if (daySelected === "All") {
       if (selected === "fish") {
         return creature.sourceSheet === "Fish";
       } else if (selected === "insects") {

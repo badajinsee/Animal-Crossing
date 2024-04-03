@@ -1,10 +1,16 @@
 import { items } from "animal-crossing";
 import { Link } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { loadingState } from "../recoilState";
 
 // 가구
 const Housewares = () => {
   // 가구 불러오기
   const generalFurniture = items.filter((f) => f.sourceSheet === "Housewares");
+
+  // 로딩 가져오기
+  const [loading, setLoading] = useRecoilState(loadingState);
+
   return (
     <div className="flex flex-wrap justify-center ">
       {generalFurniture.map((item) => {
