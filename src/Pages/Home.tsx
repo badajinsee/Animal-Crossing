@@ -109,11 +109,11 @@ const Home = () => {
               key={index}
             >
               <img
-                className="w-16"
+                className="w-16 max-sm:w-12"
                 src={villager.iconImage}
                 alt={villager.translations.kRko}
               />
-              <p className="text-2xl text-white">
+              <p className="text-2xl text-white max-sm:text-sm">
                 오늘은 {villager.translations.kRko}의 생일이에요!
               </p>
             </Link>

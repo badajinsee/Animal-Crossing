@@ -38,7 +38,9 @@ const FurnitureDetail = () => {
     <>
       <div className="flex justify-center items-center gap-10">
         <div className="grid items-center justify-center mt-3 ">
-          <h1 className="text-3xl ml-2 mt-5 ">{item?.translations?.kRko}</h1>
+          <h1 className="text-3xl ml-2 mt-5 max-sm:text-xl ">
+            {item?.translations?.kRko}
+          </h1>
           <h2 className="text-sm ml-3 text-gray-400">{item?.name}</h2>
           {item?.image ? (
             <img
@@ -54,7 +56,7 @@ const FurnitureDetail = () => {
           )}
         </div>
 
-        <div className="flex flex-col justify-center items-center text-lg rounded-lg border border-lime-400 p-5 mt-12">
+        <div className="flex flex-col justify-center items-center text-lg rounded-lg border border-lime-400 p-5 mt-12 max-sm:text-sm">
           {item?.sourceSheet === "Housewares" ? (
             <div>
               <span>종류: 가구</span>
@@ -68,9 +70,9 @@ const FurnitureDetail = () => {
           {item?.buy === -1 ? (
             <span></span>
           ) : (
-            <div className="flex items-center mr-6 ">
+            <div className="flex items-center mr-6 max-sm:text-sm ">
               <img
-                className="w-12 ml-2"
+                className="w-12 ml-2 max-sm:w-4 "
                 src={process.env.PUBLIC_URL + "/images/벨_배경삭제.png"}
                 alt=""
               />
@@ -78,12 +80,16 @@ const FurnitureDetail = () => {
             </div>
           )}
 
-          {item?.catalog && <span>구매여부: {krCatalog()}</span>}
+          {item?.catalog && (
+            <span className="max-sm:text-sm">구매여부: {krCatalog()}</span>
+          )}
 
           <div>
             {item?.colors ? (
-              <div>
-                <span> 컬러: {item?.colors && item?.colors[0]},</span>
+              <div className="max-sm:text-sm">
+                <span className="max-sm:text-sm">
+                  컬러: {item?.colors && item?.colors[0]},
+                </span>
                 <span> {item?.colors && item?.colors[1]}</span>
               </div>
             ) : (

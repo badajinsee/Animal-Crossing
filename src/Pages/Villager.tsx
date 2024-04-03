@@ -59,26 +59,26 @@ const Vilger = () => {
     );
   } else if (animal) {
     return (
-      <div className="flex justify-center items-center p-0 m-10  ">
+      <div className="flex justify-center items-center p-0 m-10 max-sm:text-sm  ">
         <div className="border-2 p-8 bg-emerald-50  ">
           <h1 className="text-3xl mb-2 hover:text-green-300">
             {animal?.translations.kRko}
           </h1>
           <img src={animal.photoImage} alt="동물 주민 사진" />
-          <div className="flex-column px-20 text-lg py-4">
-            <div className="flex ">
+          <div className="flex-column px-20 text-lg py-4 max-sm:px-16">
+            <div className="flex max-sm:text-sm">
               <h2 className="pr-2 text-green-600 ">생일:</h2>
               <h1 className="hover:text-green-300">{animal.birthday}</h1>
             </div>
-            <div className="flex">
+            <div className="flex max-sm:text-sm">
               <h2 className="pr-2 text-green-600">성격:</h2>
               <h1 className="hover:text-green-300">{animal.personality}</h1>
             </div>
-            <div className="flex">
+            <div className="flex max-sm:text-sm">
               <h2 className="pr-2 text-green-600">종류:</h2>
               <h1 className="hover:text-green-300">{animal.species}</h1>
             </div>
-            <div className="flex">
+            <div className="flex max-sm:text-sm">
               <h2 className="pr-2 text-green-600">말투:</h2>
               <h1 className="hover:text-green-300">
                 "{animal.catchphrases.kRko}"
@@ -92,11 +92,13 @@ const Vilger = () => {
     return (
       <div className="text-4xl text-center my-10 flex justify-center ">
         <img
-          className="w-28"
+          className="w-28 max-sm:w-20 max-sm:h-20 max-sm:my-6 "
           src={process.env.PUBLIC_URL + "/images/두더지_배경삭제.png"}
           alt=""
         />
-        <h1 className="p-6">"{name}" 이름을 가진 동물은 없어요 !</h1>
+        <h1 className="p-6 max-sm:text-md">
+          "{name}" 이름을 가진 동물은 없어요 !
+        </h1>
       </div>
     );
   }
