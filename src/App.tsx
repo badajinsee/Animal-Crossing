@@ -1,11 +1,5 @@
 import "./App.css";
-import {
-  RecoilRoot,
-  atom,
-  selector,
-  useRecoilState,
-  useRecoilValue,
-} from "recoil";
+import { RecoilRoot } from "recoil";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Home from "./Pages/Home";
