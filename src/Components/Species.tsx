@@ -90,9 +90,7 @@ const Species = () => {
         animalSpecies.map((species, index) => (
           <div className="mb-20" key={species}>
             <div className="flex justify-center mb-7 text-3xl">
-              <h2 className="text-green-700 underline">
-                {speciesTitle[index]}
-              </h2>
+              <h2>{speciesTitle[index]}</h2>
             </div>
             <div className="flex flex-wrap justify-center gap-2 ">
               {villagers
