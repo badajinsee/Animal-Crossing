@@ -26,6 +26,7 @@
 <h3 align="left"> Tools</h3>
 
 - React
+- TypeScript
 - Recoil
 - React-router
 - React-spinners
