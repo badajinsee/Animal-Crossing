@@ -59,7 +59,7 @@ const Vilger = () => {
     );
   } else if (animal) {
     return (
-      <div className="flex justify-center items-center p-0 m-10 max-sm:text-sm  ">
+      <div className="flex justify-center items-center p-0 m-10 max-sm:text-sm ">
         <div className="border-2 p-8 bg-emerald-50  ">
           <h1 className="text-3xl mb-2 hover:text-green-300">
             {animal?.translations.kRko}
@@ -67,19 +67,19 @@ const Vilger = () => {
           <img src={animal.photoImage} alt="동물 주민 사진" />
           <div className="flex-column px-20 text-lg py-4 max-sm:px-16">
             <div className="flex max-sm:text-sm">
-              <h2 className="pr-2 text-green-600 ">생일:</h2>
+              <h2 className="pr-2 max-sm:pr-0 text-green-600 ">생일:</h2>
               <h1 className="hover:text-green-300">{animal.birthday}</h1>
             </div>
             <div className="flex max-sm:text-sm">
-              <h2 className="pr-2 text-green-600">성격:</h2>
+              <h2 className="pr-2 max-sm:pr-0 text-green-600">성격:</h2>
               <h1 className="hover:text-green-300">{animal.personality}</h1>
             </div>
             <div className="flex max-sm:text-sm">
-              <h2 className="pr-2 text-green-600">종류:</h2>
+              <h2 className="pr-2 max-sm:pr-0 text-green-600">종류:</h2>
               <h1 className="hover:text-green-300">{animal.species}</h1>
             </div>
             <div className="flex max-sm:text-sm">
-              <h2 className="pr-2 text-green-600">말투:</h2>
+              <h2 className="pr-2 max-sm:pr-0 text-green-600">말투:</h2>
               <h1 className="hover:text-green-300">
                 "{animal.catchphrases.kRko}"
               </h1>
