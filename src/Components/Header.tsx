@@ -9,13 +9,23 @@ const Header = () => {
             <img
               className="Logo m-7 p-0 w-18 h-24"
               src={process.env.PUBLIC_URL + "/images/레이니_배경삭제.png"}
-              alt=""
+              alt="rainyday_logo"
             />
-            <h2 className="text-center text-5xl py-10 text-white ">
-              레이니데이
-            </h2>
+            <div>
+              <h2 className="text-center text-5xl py-10 text-white ">
+                레이니데이
+              </h2>
+            </div>
           </div>
         </Link>
+        <span
+          onClick={() =>
+            window.open("https://github.com/badajinsee/Animal-Crossing")
+          }
+          className="ml-4 text-green-500 hover:text-black"
+        >
+          Created by Sunjin
+        </span>
       </div>
 
       <div className="flex justify-center">
