@@ -2,7 +2,8 @@ import { items } from "animal-crossing";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { loadingState } from "../recoilState";
-
+import { useEffect } from "react";
+import { HashLoader } from "react-spinners";
 // 가구
 const Housewares = () => {
   // 가구 불러오기
@@ -10,6 +11,22 @@ const Housewares = () => {
 
   // 로딩 가져오기
   const [loading, setLoading] = useRecoilState(loadingState);
+
+  useEffect(() => {
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, [setLoading]);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center mt-64">
+        <HashLoader color="#36d7b7" />
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-wrap justify-center ">
