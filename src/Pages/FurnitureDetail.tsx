@@ -56,7 +56,7 @@ const FurnitureDetail = () => {
           )}
         </div>
 
-        <div className="flex flex-col justify-center items-center text-lg rounded-lg border border-lime-400 p-5 mt-12 max-sm:text-sm">
+        <div className="flex flex-col justify-center items-center text-lg rounded-lg border border-lime-400  p-5 mt-12  max-sm:p-2 max-sm:text-sm">
           {item?.sourceSheet === "Housewares" ? (
             <div>
               <span>종류: 가구</span>
@@ -72,7 +72,7 @@ const FurnitureDetail = () => {
           ) : (
             <div className="flex items-center mr-6 max-sm:text-sm ">
               <img
-                className="w-12 ml-2 max-sm:w-4 "
+                className="w-12 ml-2 max-sm:w-5 "
                 src={process.env.PUBLIC_URL + "/images/벨_배경삭제.png"}
                 alt=""
               />
