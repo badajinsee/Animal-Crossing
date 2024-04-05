@@ -59,7 +59,7 @@ const Vilger = () => {
     );
   } else if (animal) {
     return (
-      <div className="flex justify-center items-center p-0 m-10 max-sm:text-sm ">
+      <div className="flex justify-center items-center p-0 m-10 max-sm:text-sm max-sm: mb-10 ">
         <div className="border-2 p-8 bg-emerald-50  ">
           <h1 className="text-3xl mb-2 hover:text-green-300">
             {animal?.translations.kRko}
